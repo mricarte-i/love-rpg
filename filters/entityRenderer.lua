@@ -23,9 +23,14 @@ function EntityRenderer:render(entity)
             body.height
         )
     elseif drawable.type == "spriteanimation" then
+        assert(entity:has("statemachine"))
+        local state = entity:get("statemachine")
+
+        print(state.current)
+        print(drawable:getAnimation(state.current))
         love.graphics.draw(
-            drawable:getAnimation("idle").animation.spritesheet,
-            drawable:getAnimation("idle").animation.frames[drawable.currentFrame],
+            drawable:getAnimation(state.current).animation.spritesheet,
+            drawable:getAnimation(state.current).animation.frames[drawable.currentFrame],
             body.x,
             body.y
         )
@@ -39,9 +44,12 @@ function EntityRenderer:update(entity, dt)
     drawable.timeSinceLastFrame = drawable.timeSinceLastFrame + dt
 
     if drawable.type == "spriteanimation" then
-        if drawable.timeSinceLastFrame > drawable:getAnimation("idle").animation.frameDuration then
-            drawable.timeSinceLastFrame = drawable.timeSinceLastFrame - drawable:getAnimation("idle").animation.frameDuration
-            drawable.currentFrame = drawable.currentFrame % drawable:getAnimation("idle").animation.totalFrames + 1
+        assert(entity:has("statemachine"))
+        local state = entity:get("statemachine")
+
+        if drawable.timeSinceLastFrame > drawable:getAnimation(state.current).animation.frameDuration then
+            drawable.timeSinceLastFrame = drawable.timeSinceLastFrame - drawable:getAnimation(state.current).animation.frameDuration
+            drawable.currentFrame = drawable.currentFrame % drawable:getAnimation(state.current).animation.totalFrames + 1
         end
     end
 
