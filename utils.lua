@@ -12,3 +12,4 @@ function dumpTable(o)
         return tostring(o)
     end
 end
+
