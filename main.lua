@@ -32,7 +32,7 @@ function love.load()
     player:add(createStateMachine({
         {name="idle"},
         {name="walk"}
-    }, "idle"))
+    }, "walk"))
 
     --player:add(createSpriteAnimation("assets/spritesheets/char-animations.png", 0, 0, 24, 24, 4))
 
