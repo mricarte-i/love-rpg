@@ -19,34 +19,6 @@ gGame = require "game"
 
 
 function love.load()
-    local player = Manager:create()
-
-    player:add(createBody(10, 10, 24, 24))
-    player:add(createPhysics(0, 0, 0.01, 500, 500))
-    player:add(createPlayer())
-
-    --player:add(createDrawable("rect", {0.5, 0.4, 0, 1}))
-
-player:add(
-        createDrawable(
-            "spriteanimation",
-            nil,
-            {
-                { name="idle", animation = createSpriteAnimation("assets/spritesheets/char-animations.png", 0, 0, 24, 24, 4)},
-                { name="walk", animation = createSpriteAnimation("assets/spritesheets/char-animations.png", 0, 24, 24, 24, 4)},
-            },
-            "assets/spritesheets/char-animations.png"
-        )
-)
-
-    player:add(createStateMachine({
-        {name="idle"},
-        {name="walk"}
-    }, {name="idle"}))
-
-    --player:add(createSpriteAnimation("assets/spritesheets/char-animations.png", 0, 0, 24, 24, 4))
-
-    print(player:get("body").x)
 
     --simpleScale thx
     scale = {
@@ -65,6 +37,37 @@ player:add(
     require "lib/simpleScale"
 
     simpleScale.setWindow(scale.gameWidth, scale.gameHeight, scale.windowWidth, scale.windowHeight, scale.settings)
+
+    local player = Manager:create()
+
+    player:add(createBody(10, 10, 24, 24))
+    player:add(createPhysics(0, 0, 0.01, 500, 500))
+    player:add(createPlayer())
+
+    --player:add(createDrawable("rect", {0.5, 0.4, 0, 1}))
+
+    player:add(
+            createDrawable(
+                "spriteanimation",
+                nil,
+                {
+                    { name="idle", animation = createSpriteAnimation("assets/spritesheets/char-animations.png", 0, 0, 24, 24, 4)},
+                    { name="walk", animation = createSpriteAnimation("assets/spritesheets/char-animations.png", 0, 24, 24, 24, 4)},
+                },
+                "assets/spritesheets/char-animations.png"
+            )
+    )
+
+    player:add(createStateMachine({
+        {name="idle"},
+        {name="walk"}
+    }, {name="idle"}))
+
+    --player:add(createSpriteAnimation("assets/spritesheets/char-animations.png", 0, 0, 24, 24, 4))
+
+    --print(player:get("body").x)
+
+
 
 end
 
