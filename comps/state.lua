@@ -16,9 +16,11 @@ local function createStateMachine(states, default)
         setState = function(self, name)
             local state = self:getState(name)
 
-            if self:getState(name) == self.states[1] and self.states[1].name ~= name then
-            else
-                self.current = state.name
+            if state == self.states[1] and self.states[1].name ~= name then
+                return
+            elseif self.current.name ~= state.name then
+                self.current = state
+                print(self.current.name)
             end
         end,
     }
