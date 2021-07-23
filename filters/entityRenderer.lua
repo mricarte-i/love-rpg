@@ -11,6 +11,8 @@ function EntityRenderer:render(entity)
     --print(drawable.currentFrame)
     --print(drawable.animations[1].animation.frames[drawable.currentFrame])
 
+    print(dumpTable(drawable:getAnimation("idle")))
+
     if drawable.type == "rect" then
         love.graphics.setColor(unpack(drawable.color))
         love.graphics.rectangle(
@@ -23,7 +25,8 @@ function EntityRenderer:render(entity)
     elseif drawable.type == "spriteanimation" then
         love.graphics.draw(
             drawable.animations[1].animation.spritesheet,
-            drawable.animations[1].animation.frames[drawable.currentFrame],
+            --drawable.animations[1].animation.frames[drawable.currentFrame],
+            drawable:getAnimation("idle").animation.frames[drawable.currentFrame],
             body.x,
             body.y
         )
