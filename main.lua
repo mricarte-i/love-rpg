@@ -20,7 +20,7 @@ function love.load()
 
     player:add(createBody(10, 10, 24, 24))
     player:add(createDrawable("rect", {0.5, 0.4, 0, 1}))
-    player:add(createPhysics(100, 0))
+    player:add(createPhysics(0, 0, 0.01, 200, 200))
     player:add(createPlayer())
 
     print(player:get("body").x)
