@@ -43,8 +43,10 @@ function love.load()
         windowWidth = 1280,
         windowHeight = 720
     }
+
     love.graphics.setDefaultFilter("nearest", "nearest")
     require "lib/simpleScale"
+
     simpleScale.setWindow(scale.gameWidth, scale.gameHeight, scale.windowWidth, scale.windowHeight, scale.settings)
 
 end
