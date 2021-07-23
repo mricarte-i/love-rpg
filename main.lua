@@ -9,6 +9,7 @@ local createBody = require "comps/body"
 local createDrawable = require "comps/drawable"
 local createPhysics = require "comps/physics"
 local createPlayer = require "comps/player"
+local createSpriteAnimation = require "comps/sprite"
 
 gGame = require "game"
 
@@ -22,6 +23,7 @@ function love.load()
     player:add(createDrawable("rect", {0.5, 0.4, 0, 1}))
     player:add(createPhysics(0, 0, 0.01, 200, 200))
     player:add(createPlayer())
+    player:add(createSpriteAnimation("assets/spritesheets/char-animations.png", 0, 0, 24, 24, 4))
 
     print(player:get("body").x)
 
