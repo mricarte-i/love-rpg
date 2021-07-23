@@ -26,11 +26,11 @@ function EntityRenderer:render(entity)
         assert(entity:has("statemachine"))
         local state = entity:get("statemachine")
 
-        print("current:",state.current)
-        print("animation:", dumpTable(drawable:getAnimation(state.current)[1]))
+        --print("current:",state.current.name)
+        --print("animation:", dumpTable(drawable:getAnimation(state.current.name)))
         love.graphics.draw(
-            drawable:getAnimation(state.current)[1].spritesheet,
-            drawable:getAnimation(state.current)[1].frames[drawable.currentFrame],
+            drawable:getAnimation(state.current.name).spritesheet,
+            drawable:getAnimation(state.current.name).frames[drawable.currentFrame],
             body.x,
             body.y
         )
@@ -47,13 +47,14 @@ function EntityRenderer:update(entity, dt)
         assert(entity:has("statemachine"))
         local state = entity:get("statemachine")
 
-        --print(dumpTable(drawable:getAnimation(state.current)))
+        --print(state.current.name)
+        --print(dumpTable(drawable:getAnimation(state.current.name)))
         --print(drawable.timeSinceLastFrame)
-        --print(drawable:getAnimation(state.current)[1].frameDuration)
+        --print(drawable:getAnimation(state.current.name).frameDuration)
 
-        if drawable.timeSinceLastFrame > drawable:getAnimation(state.current)[1].frameDuration then
-            drawable.timeSinceLastFrame = drawable.timeSinceLastFrame - drawable:getAnimation(state.current)[1].frameDuration
-            drawable.currentFrame = drawable.currentFrame % drawable:getAnimation(state.current)[1].totalFrames + 1
+        if drawable.timeSinceLastFrame > drawable:getAnimation(state.current.name).frameDuration then
+            drawable.timeSinceLastFrame = drawable.timeSinceLastFrame - drawable:getAnimation(state.current.name).frameDuration
+            drawable.currentFrame = drawable.currentFrame % drawable:getAnimation(state.current.name).totalFrames + 1
         end
     end
 

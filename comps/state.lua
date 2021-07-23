@@ -17,10 +17,9 @@ local function createStateMachine(states, default)
             local state = self:getState(name)
 
             if state == self.states[1] and self.states[1].name ~= name then
-                return
             elseif self.current.name ~= state.name then
                 self.current = state
-                print(self.current.name)
+                --print("changed state to: ", self.current.name)
             end
         end,
     }

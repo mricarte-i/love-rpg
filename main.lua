@@ -27,12 +27,22 @@ function love.load()
 
     --player:add(createDrawable("rect", {0.5, 0.4, 0, 1}))
 
-    player:add(createDrawable("spriteanimation", nil, { { name="idle", animation = createSpriteAnimation("assets/spritesheets/char-animations.png", 0, 0, 24, 24, 4)}, { name="walk", createSpriteAnimation("assets/spritesheets/char-animations.png", 0, 24, 24, 24, 4)}, }, "assets/spritesheets/char-animations.png"))
+player:add(
+        createDrawable(
+            "spriteanimation",
+            nil,
+            {
+                { name="idle", animation = createSpriteAnimation("assets/spritesheets/char-animations.png", 0, 0, 24, 24, 4)},
+                { name="walk", animation = createSpriteAnimation("assets/spritesheets/char-animations.png", 0, 24, 24, 24, 4)},
+            },
+            "assets/spritesheets/char-animations.png"
+        )
+)
 
     player:add(createStateMachine({
         {name="idle"},
         {name="walk"}
-    }, "walk"))
+    }, {name="idle"}))
 
     --player:add(createSpriteAnimation("assets/spritesheets/char-animations.png", 0, 0, 24, 24, 4))
 
