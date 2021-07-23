@@ -20,7 +20,7 @@ function love.load()
     local player = Manager:create()
 
     player:add(createBody(10, 10, 24, 24))
-    player:add(createPhysics(0, 0, 0.01, 200, 200))
+    player:add(createPhysics(0, 0, 0.01, 500, 500))
     player:add(createPlayer())
 
     --player:add(createDrawable("rect", {0.5, 0.4, 0, 1}))

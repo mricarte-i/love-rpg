@@ -29,6 +29,7 @@ local function createDrawable(theType, color, animations, spritesheet)
         spritesheet = spritesheet or "",
         currentFrame = 1,
         getAnimation = getAnim,
+        timeSinceLastFrame = 0,
     }
 end
 

@@ -33,3 +33,16 @@ function EntityRenderer:render(entity)
         assert(false, string.format("Entity renderer does not support the drawable type [%s]", drawable.type))
     end
 end
+
+function EntityRenderer:update(entity, dt)
+    local drawable = entity:get("drawable")
+    drawable.timeSinceLastFrame = drawable.timeSinceLastFrame + dt
+
+    if drawable.type == "spriteanimation" then
+        if drawable.timeSinceLastFrame > drawable:getAnimation("idle").animation.frameDuration then
+            drawable.timeSinceLastFrame = drawable.timeSinceLastFrame - drawable:getAnimation("idle").animation.frameDuration
+            drawable.currentFrame = drawable.currentFrame % drawable:getAnimation("idle").animation.totalFrames + 1
+        end
+    end
+
+end
