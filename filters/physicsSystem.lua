@@ -20,4 +20,7 @@ function PhysicsSystem:update(entity, dt)
     body.x = xbody.x
     body.y = ybody.y
 
+    physics.vx = physics.vx * math.pow(physics.friction, dt)
+    physics.vy = physics.vy * math.pow(physics.friction, dt)
+
 end

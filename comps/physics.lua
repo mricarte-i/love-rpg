@@ -3,7 +3,7 @@ local function createPhysics(vx, vy)
         name_ = "physics",
         vx = vx,
         vy = vy,
-        friction =  0.2,
+        friction =  0.02,
         speedx = 3200,
         speedy = 3200,
 
