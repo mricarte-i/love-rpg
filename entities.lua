@@ -50,8 +50,8 @@ function manager:filter(matchList)
             if not ent:has(match) then
                 return false
             end
-            return true
         end
+        return true
     end
 
     table.insert(self.filters, filter)

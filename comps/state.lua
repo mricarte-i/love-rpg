@@ -1,3 +1,5 @@
+require "utils"
+
 local function createStateMachine(states, default)
     assert(states ~= nil)
     assert(#states >= 1)
@@ -20,6 +22,7 @@ local function createStateMachine(states, default)
             elseif self.current.name ~= state.name then
                 self.current = state
                 --print("changed state to: ", self.current.name)
+                --print("statemachine:", dumpTable(self))
             end
         end,
     }

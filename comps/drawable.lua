@@ -12,7 +12,7 @@ local function createDrawable(theType, color, animations, spritesheet)
         getAnim = function (self, name)
             --print("getting anim:", name)
             for i=1, #self.animations do
-                print("reading through:", dumpTable(self.animations[i]))
+                --print("reading through:", dumpTable(self.animations[i]))
                 if self.animations[i].name == name then
                     --print("got anim:", self.animations[i].animation)
                     return self.animations[i].animation

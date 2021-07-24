@@ -49,7 +49,7 @@ function love.load()
     player:add(
             createDrawable(
                 "spriteanimation",
-                nil,
+                { 1, 1, 1, 1 },
                 {
                     { name="idle", animation = createSpriteAnimation("assets/spritesheets/char-animations.png", 0, 0, 24, 24, 4)},
                     { name="walk", animation = createSpriteAnimation("assets/spritesheets/char-animations.png", 0, 24, 24, 24, 4)},
@@ -66,6 +66,11 @@ function love.load()
     --player:add(createSpriteAnimation("assets/spritesheets/char-animations.png", 0, 0, 24, 24, 4))
 
     --print(player:get("body").x)
+
+    local enemy = Manager:create()
+    enemy:add(createBody(40, 10, 24, 24))
+    enemy:add(createPhysics(0, 0, 0.01, 500, 500))
+    enemy:add(createDrawable("rect", {0.5, 0.4, 0, 1}))
 
 
 
