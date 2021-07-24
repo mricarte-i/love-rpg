@@ -6,6 +6,9 @@ function PhysicsSystem:update(entity, dt)
     local physics = entity:get("physics")
     local body = entity:get("body")
 
+    if(body == nil) then
+        print("WHY")
+    end
     local xbody = createBody(
         body.x + physics.vx * dt,
         body.y
