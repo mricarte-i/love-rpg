@@ -26,6 +26,7 @@ function EntityRenderer:render(entity)
         assert(entity:has("statemachine"))
         local state = entity:get("statemachine")
 
+        love.graphics.setColor(unpack(drawable.color))
         --print("current:",state.current.name)
         --print("animation:", dumpTable(drawable:getAnimation(state.current.name)))
         love.graphics.draw(
