@@ -15,6 +15,7 @@ function manager:update(dt)
                 if not ent.loaded then
                     filter:load(ent)
                 end
+                filter:interact(ent, self.entities, dt)
             end
         end
         ent.loaded = true
@@ -42,7 +43,9 @@ function manager:filter(matchList)
         render = function(self, entity)
         end,
         destroy = function(self, entity)
-        end
+        end,
+        interact = function(self, entity, entities, dt)
+        end,
     }
 
     function filter:matches(ent)

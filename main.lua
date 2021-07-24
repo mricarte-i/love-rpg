@@ -3,6 +3,7 @@ Manager = require "entities"
 require "filters/entityRenderer"
 require "filters/physicsSystem"
 require "filters/playerController"
+require "filters/collisionSystem"
 require "comps/comp"
 
 local createBody = require "comps/body"
